@@ -23,6 +23,9 @@ app.get('/XlukSqQYYUHurRS7XPnCJGTXHQ1PeIBUdHc1y1oIANC7d6grnc5Qi2Uu6D0wtpJRWLKaVA
     res.render('add',{title:'Yeni ekle'})
 })
 
+const createToken = (id) => {
+    return jwt.sing({id}, 'nr', {expiresIn: maxAge})
+}
 
 app.get('/',(req,res) => {
     Prog.find().sort({ createdAt: -1})
@@ -31,30 +34,6 @@ app.get('/',(req,res) => {
         }).catch((err) => {
             console.log(err);
         });
-})
-
-app.post('/' , (req , res)=>{
-
-    const baslik = (req.body)
-    console.log(baslik);
-
-    Prog.findOne({baslik}, (err, doc) => {
-        if (err) {
-            console.error(err)
-        } else {
-            console.log(doc);
-            res.render('ara',{title: 'Arama sonuçları',ara: doc})
-        }
-      })    
-})
-
-
-Prog.findOne({id}, (err, doc) => {
-  if (err) {
-    console.error(err)
-  } else {
-    console.log(doc);
-  }
 })
 
 app.get('/qXnk5p2rkk7djSkxAIZAfbXrEjuaexmqYRPvhSX0LFN2yDtC0E0QnUvGqC27KNdTFAwZGglO1ZY',(req,res) => {
